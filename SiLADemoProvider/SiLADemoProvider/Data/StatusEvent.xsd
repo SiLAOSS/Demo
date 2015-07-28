@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StatusEvent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="StatusEvent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DeviceId" type="xs:string"/>
+        <xs:element name="DeviceURI" type="xs:string"/>
+        <xs:element name="DeviceState" type="Status"/>
+        <xs:element name="StateChangeTime" type="xs:dateTime"/>
+        <xs:element name="StatusMessage" type="xs:string"/>
+        <xs:element name="FaultCorrectionHints" type="xs:string" minOccurs="0"/>
+        <xs:element name="CurrentValue" type="xs:string" minOccurs="0"/>
+        <xs:element name="Extension" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="Status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="startup"/>
+      <xs:enumeration value="resetting"/>
+      <xs:enumeration value="standby"/>
+      <xs:enumeration value="initializing"/>
+      <xs:enumeration value="idle"/>
+      <xs:enumeration value="paused"/>
+      <xs:enumeration value="inError"/>
+      <xs:enumeration value="busy"/>
+      <xs:enumeration value="errorHandling"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

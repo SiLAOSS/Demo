@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ContinuationTask" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ContinuationTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ErrorMessage" type="xs:string"/>
+        <xs:element name="DefaultTask">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TaskType" type="xs:string"/>
+              <xs:element name="TaskText" type="xs:string"/>
+              <xs:element name="UserInteractionTimeout" type="xs:duration"/>
+              <xs:element name="Extension" type="xs:string"
+              minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="AutomaticAfterTimeout" type="xs:boolean" use="required"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Task" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TaskType" type="xs:string"/>
+              <xs:element name="TaskText" type="xs:string"/>
+              <xs:element name="Extension" type="xs:anyType"
+              minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SelectedTask" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TaskType" type="xs:string"/>
+              <xs:element name="Extension" type="xs:string"
+              minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Extension" type="xs:string"
+        minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
