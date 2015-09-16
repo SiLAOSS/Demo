@@ -37,18 +37,15 @@ namespace SiLA.Provider
 
         #region Mandatory
 
-        /// <SiLACommandDescription isCommonCommand="true" estimatedDuration="PT0S"
-        /// xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        /// xsi:noNamespaceSchemaLocation="http://sila-standard.org/schemata/SoapAnnotation_1.2.xsd">
-        /// <summary> 
-        /// This command aborts all running and pending asynchronous commands of the device.
-        /// </summary>
-        /// <param name="requestId" minValue="1" maxValue="2147483647">This parameter is the unique identification of this command call. </param>
-        /// <param name="lockId" >This parameter is the identification of the PMS which has locked the device.</param>
-        /// <response xsi:type="standardResponse" parameterSetCount="0">
-        /// <description>Empty response</description>
-        /// </response>
-        /// </SiLACommandDescription>
+        ///<?xml version="1.0" encoding="UTF-8"?>
+        ///<SiLACommandDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" isCommonCommand="true" estimatedDuration="PT0S" xsi:noNamespaceSchemaLocation="http://sila-standard.org/schemata/SoapAnnotation_1.2.xsd">
+        ///   <summary>This command aborts all running and pending asynchronous commands of the device.</summary>
+        ///   <param name="requestId" minValue="1" maxValue="2147483647">This parameter is the unique identification of this command call.</param>
+        ///   <param name="lockId">This parameter is the identification of the PMS which has locked the device.</param>
+        ///   <response xsi:type="standardResponse" parameterSetCount="0">
+        ///      <description>Empty response</description>
+        ///   </response>
+        ///</SiLACommandDescription>
         [WebMethod(Description = SiLAWebMethodDescriptions.AbortDescription)]
         public SiLAReturnValue Abort(int requestId, string lockId)
         {
@@ -139,7 +136,7 @@ namespace SiLA.Provider
             
             SiLAReturnValue returnValue = new SiLAReturnValue(
                 (int)ReturnCode.Success,
-                "",
+                this.Device.DeviceIdentification.DeviceName + "device status is Success",
                 Tools.ZeroDuration,
                 this.Device.DeviceIdentification.SiLADeviceClass);
 
@@ -166,18 +163,16 @@ namespace SiLA.Provider
             return returnValue;
         }
 
-        /// <SiLACommandDescription isCommonCommand="true" estimatedDuration="PT0S"
-        /// xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        /// xsi:noNamespaceSchemaLocation="http://sila-standard.org /schemata/SoapAnnotation_1.2.xsd">
-        /// <summary> 
-        /// This command initializes the device.
-        /// </summary>
-        /// <param name="requestId" minValue="1" maxValue="2147483647">This parameter ist the unique identification of this command call.</param>
-        /// <param name="lockId">This parameter is the identification of the PMS which has locked the device.</param>
-        /// <response xsi:type="standardResponse" parameterSetCount="0">
-        /// <description>Empty response</description>
-        /// </response>
-        /// </SiLACommandDescription>
+
+
+        ///<SiLACommandDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" isCommonCommand="true" estimatedDuration="PT0S" xsi:noNamespaceSchemaLocation="http://sila-standard.org /schemata/SoapAnnotation_1.2.xsd">
+        ///   <summary>This command initializes the device.</summary>
+        ///   <param name="requestId" minValue="1" maxValue="2147483647">This parameter ist the unique identification of this command call.</param>
+        ///   <param name="lockId">This parameter is the identification of the PMS which has locked the device.</param>
+        ///   <response xsi:type="standardResponse" parameterSetCount="0">
+        ///      <description>Empty response</description>
+        ///   </response>
+        ///</SiLACommandDescription>
         [WebMethod(Description = SiLAWebMethodDescriptions.InitializeDescription)]
         public SiLAReturnValue Initialize(int requestId, string lockId)
         {             

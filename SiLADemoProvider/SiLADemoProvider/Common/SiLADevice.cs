@@ -164,7 +164,7 @@ namespace SiLA.Provider
             else
             {
                 // returns AsynchronousCommandHasFinished
-                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, 0);
+                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished);
             }
 
             return returnValue;
@@ -211,7 +211,7 @@ namespace SiLA.Provider
             else
             {
                 // returns AsynchronousCommandHasFinished
-                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, 0);
+                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished);
             }
 
             return returnValue;
@@ -236,7 +236,7 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, 0);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error",0);
                 }
 
                 this.LockDuration = TimeSpan.FromMilliseconds(0);
@@ -270,7 +270,7 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, 0);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error", 0);
                 }
 
                 this.LockDuration = TimeSpan.FromMilliseconds(0);
@@ -326,6 +326,7 @@ namespace SiLA.Provider
             if (this.IsLocked && this.LockID != lockId)
             {
                 returnValue.returnCode = (int)ReturnCode.ErrorOnLockId;
+                returnValue.message = "There is an error in LockId parameter.";
             }
             else
             {
@@ -348,14 +349,16 @@ namespace SiLA.Provider
         /// Creates the return value.
         /// </summary>
         /// <param name="retCode">The return code.</param>
+        /// <param name="retText">The message.</param>
         /// <param name="duration">The duration.</param>
         /// <returns></returns>
-        protected SiLAReturnValue CreateReturnValue(ReturnCode retCode = ReturnCode.AsynchronousCommandAccepted, int duration = 0)
+        protected SiLAReturnValue CreateReturnValue(ReturnCode retCode = ReturnCode.AsynchronousCommandAccepted, string retText="No Error", int duration = 0)
         {
             SiLAReturnValue retValue;
             retValue = new SiLAReturnValue()
             {
                 returnCode = (int)retCode,
+                message = retText,
                 duration = Tools.ToDuration(TimeSpan.FromMilliseconds(duration)),
                 deviceClass = this.DeviceIdentification.SiLADeviceClass,
             };
@@ -470,7 +473,7 @@ namespace SiLA.Provider
 
             this.State = Status.idle;
             this.AbortRequested = false;
-            return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, 0);
+            return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished);
         }
 
         #endregion //Continue	
@@ -488,7 +491,7 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, 0);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, "No Error",0);
                 }
 
                 this.AbortRequested = true;
@@ -520,7 +523,7 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, 0);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, "No Error",0);
                 }
 
                 this.State = Status.paused;

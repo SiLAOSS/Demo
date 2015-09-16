@@ -61,7 +61,7 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, 100);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, "No Error",100);
                 }
 
                 SiLAReturnValue retParam =  this.CreateReturnValue();
@@ -137,7 +137,7 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, 100);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error",100);
                 }
 
                 // The paramsXML represents a ParameterSet
@@ -168,14 +168,14 @@ namespace SiLA.Provider
                 if (noexec)
                 {
                     // calculates the estimated duration and returns AsynchronousCommandAccepted
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, duration);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error",duration);
                 }
                 
                 // performs a demo action
                 Thread.Sleep(duration);
 
                 // calculates the estimated duration and returns AsynchronousCommandAccepted
-                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, duration);
+                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished,"No Error",duration);
             }); 
             
             return returnValue;
@@ -194,13 +194,13 @@ namespace SiLA.Provider
                 int duration = 550;
                 if (noexec)
                 {
-                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, duration);
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error", duration);
                 }
 
                 // performs a demo action
                 Thread.Sleep(duration);
 
-                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, duration);
+                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished,"No Error", duration);
             });
 
             return returnValue;
@@ -222,7 +222,7 @@ namespace SiLA.Provider
             if (evaluateOnly)
             {
                 // sets result and return value to AsynchronousCommandAccepted
-                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, resetTimeInMs);
+                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error", resetTimeInMs);
             }
             else
             {
@@ -231,7 +231,7 @@ namespace SiLA.Provider
                 this.State = Status.standby;
 
                 // sets result and return value to AsynchronousCommandHasFinished
-                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, resetTimeInMs);
+                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished,"No Error", resetTimeInMs);
             }
 
             return returnValue;
@@ -249,7 +249,7 @@ namespace SiLA.Provider
             if (evaluateOnly)
             {
                 // sets result and return value to AsynchronousCommandAccepted
-                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, duration);
+                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error", duration);
             }
             else
             {
@@ -258,7 +258,7 @@ namespace SiLA.Provider
                 this.State = Status.idle;
 
                 // sets result and return value to AsynchronousCommandHasFinished
-                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, duration);
+                returnValue = this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished,"No Error", duration);
             }
 
             return returnValue;
@@ -283,7 +283,7 @@ namespace SiLA.Provider
             if (evaluateOnly)
             {
                 // accepts the command and return the expected duration
-                return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, duration);
+                return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error", duration);
             }
 
             // continue
@@ -291,7 +291,7 @@ namespace SiLA.Provider
 
             if (isStarted && isPaused)
             {
-                return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, duration);
+                return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted,"No Error", duration);
             }
 
             if (!isStarted)
@@ -350,7 +350,7 @@ namespace SiLA.Provider
 
                 this.State = Status.idle;
                 this.AbortRequested = false;
-                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, duration);
+                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished,"No Error",duration);
             }
 
             return base.ExecuteWork(evaluateOnly);
