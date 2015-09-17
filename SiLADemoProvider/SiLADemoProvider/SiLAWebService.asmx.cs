@@ -350,7 +350,7 @@ namespace SiLA.Provider
                 return returnValue;
             }
 
-            returnValue = this.Device.Pause(time);
+            returnValue = this.Device.Delay(time);
             return returnValue;
         }
 

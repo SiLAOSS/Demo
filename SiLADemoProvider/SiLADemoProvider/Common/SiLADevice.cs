@@ -535,6 +535,39 @@ namespace SiLA.Provider
         
         #endregion //Wait	    
 
+        #region Delay
+
+        /// <summary>
+        /// Delay is used to suspend command execution 
+        /// </summary>
+        /// <param name="duration">The duration</param>
+        /// <returns>SiLAReturnValue</returns>
+        public virtual SiLAReturnValue Delay(string duration = "")
+        {
+            
+            TimeSpan interval = Tools.ToTimeSpan(duration);
+
+            SiLAReturnValue returnValue = this.ExecuteAsync(this.RequestId, (noexec) =>
+            {
+                if (noexec)
+                {
+                    this.State = Status.busy;
+                    // calculates the estimated duration and returns AsynchronousCommandAccepted
+                    return this.CreateReturnValue(ReturnCode.AsynchronousCommandAccepted, "No Error", (int)interval.TotalMilliseconds);
+                }
+
+                Thread.Sleep(interval);
+
+                this.State = Status.idle;
+
+                return this.CreateReturnValue(ReturnCode.AsynchronousCommandHasFinished, "No Error", 0);
+            });
+
+            return returnValue;
+        }
+
+        #endregion //Delay
+
         #region Private methods
 
         private bool IsItTimeToUnlcok()
