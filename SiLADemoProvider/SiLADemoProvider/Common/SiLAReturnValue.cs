@@ -1,4 +1,6 @@
-﻿namespace SiLA.Provider
+﻿using System.Xml.Serialization;
+using System.Runtime.Serialization;
+namespace SiLA.Provider
 {
     /// <summary>
     /// SiLA return value. All responses to a command MUST have the form and content of a SiLA Return Value.
@@ -25,10 +27,10 @@
         /// <param name="retDeviceClass">The ret device class.</param>
         public SiLAReturnValue(int retCode, string retText, string retDuration, int retDeviceClass)
         {
-            this.returnCode = retCode;
-            this.message = retText;
-            this.duration = retDuration;
-            this.deviceClass = retDeviceClass;
+            this.ReturnCode = retCode;
+            this.Message = retText;
+            this.Duration = retDuration;
+            this.DeviceClass = retDeviceClass;
         }
 
         #endregion //Constructors	    
@@ -42,7 +44,8 @@
         /// The ID of the Device Class.
         /// </value>
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int deviceClass { get; set; }
+        [XmlElement(ElementName="deviceClass", Order=1)]
+        public int DeviceClass { get; set; }
 
         /// <summary>
         /// Gets or sets the message.
@@ -53,7 +56,8 @@
         /// Therefore the message text should be helpful to the user of the device and contain enough information to enable a profound analysis of the error.
         /// </value>
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string message { get; set; }
+        [XmlElement(ElementName="message", Order=2)]
+        public string Message { get; set; }
 
         /// <summary>
         /// Gets or sets the duration.
@@ -67,7 +71,8 @@
         /// For use in the simulation mode, in all three cases the estimated time for processing the command shall be returned.
         /// </value>
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string duration { get; set; }
+        [XmlElement(ElementName="duration", Order=3)]
+        public string Duration { get; set; }
 
         /// <summary>
         /// Gets or sets the return code.
@@ -75,8 +80,9 @@
         /// <value>
         /// The return code itself.
         /// </value>
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int returnCode { get; set; }
+        [System.Runtime.Serialization.DataMemberAttribute(Name = "returnCode")]
+        [XmlElement(ElementName="returnCode", Order=4)]
+        public int ReturnCode { get; set; }
         
         #endregion //Properties	
     

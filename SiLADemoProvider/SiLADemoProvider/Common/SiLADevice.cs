@@ -325,18 +325,18 @@ namespace SiLA.Provider
 
             if (this.IsLocked && this.LockID != lockId)
             {
-                returnValue.returnCode = (int)ReturnCode.ErrorOnLockId;
-                returnValue.message = "There is an error in LockId parameter.";
+                returnValue.ReturnCode = (int)ReturnCode.ErrorOnLockId;
+                returnValue.Message = "There is an error in LockId parameter.";
             }
             else
             {
-                returnValue.returnCode = (int)ReturnCode.Success;
+                returnValue.ReturnCode = (int)ReturnCode.Success;
             }
 
             this.RequestId = requestId;
 
             Tools.WriteLogLine("Request for Device {0} [{6}]. RetVal: {7} ReqID:'{1}' Lock:'{2}' ID:'{3}' PMS:'{4}' EventURI:'{5}'",
-                this.DeviceIdentification.DeviceName, requestId, lockId, this.ID, this.PMSid, this.EventReceiverURI, commandName, (ReturnCode)returnValue.returnCode);
+                this.DeviceIdentification.DeviceName, requestId, lockId, this.ID, this.PMSid, this.EventReceiverURI, commandName, (ReturnCode)returnValue.ReturnCode);
 
             return returnValue;
         }
@@ -357,10 +357,10 @@ namespace SiLA.Provider
             SiLAReturnValue retValue;
             retValue = new SiLAReturnValue()
             {
-                returnCode = (int)retCode,
-                message = retText,
-                duration = Tools.ToDuration(TimeSpan.FromMilliseconds(duration)),
-                deviceClass = this.DeviceIdentification.SiLADeviceClass,
+                ReturnCode = (int)retCode,
+                Message = retText,
+                Duration = Tools.ToDuration(TimeSpan.FromMilliseconds(duration)),
+                DeviceClass = this.DeviceIdentification.SiLADeviceClass,
             };
 
             return retValue;
@@ -402,8 +402,8 @@ namespace SiLA.Provider
                 }
                 catch (Exception ex)
                 {
-                    retValue.returnCode = (int)ReturnCode.FinishedWithWarning;
-                    retValue.message = ex.Message;
+                    retValue.ReturnCode = (int)ReturnCode.FinishedWithWarning;
+                    retValue.Message = ex.Message;
                     this.State = Status.errorHandling;
                     
                     Tools.WriteLogLine("ERROR: {0}", ex);

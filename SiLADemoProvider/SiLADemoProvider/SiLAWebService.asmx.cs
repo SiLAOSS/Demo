@@ -36,8 +36,7 @@ namespace SiLA.Provider
         #endregion //Constructor	    
 
         #region Mandatory
-
-        ///<?xml version="1.0" encoding="UTF-8"?>
+       
         ///<SiLACommandDescription xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" isCommonCommand="true" estimatedDuration="PT0S" xsi:noNamespaceSchemaLocation="http://sila-standard.org/schemata/SoapAnnotation_1.2.xsd">
         ///   <summary>This command aborts all running and pending asynchronous commands of the device.</summary>
         ///   <param name="requestId" minValue="1" maxValue="2147483647">This parameter is the unique identification of this command call.</param>
@@ -55,7 +54,7 @@ namespace SiLA.Provider
             // for the aborted asynchronous commands shall be fired any more. 
            
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "Abort");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -81,7 +80,7 @@ namespace SiLA.Provider
         public SiLAReturnValue DoContinue(int requestId, string lockId)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "DoContinue");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -180,7 +179,7 @@ namespace SiLA.Provider
             // It shall only be possible to be invoked when the device is in the “standby” state.             
 
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "Initialize");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -221,7 +220,7 @@ namespace SiLA.Provider
             // If the lockTimeout parameter is 0 or Null, then the locking is permanent until the next UnlockDevice or a power shutdown.
 
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "LockDevice");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // lock error
                 return returnValue;
@@ -248,7 +247,7 @@ namespace SiLA.Provider
         public SiLAReturnValue Pause(int requestId, string lockId)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "Pause");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -288,7 +287,7 @@ namespace SiLA.Provider
 
             this.Device.PrepareForReset(deviceId, PMSId, eventReceiverURI, errorHandlingTimeout, simulationMode);
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "Reset");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // lock error
                 return returnValue;
@@ -315,7 +314,7 @@ namespace SiLA.Provider
         public SiLAReturnValue UnlockDevice(int requestId, string lockId)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "UnlockDevice");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // lock error
                 return returnValue;
@@ -344,7 +343,7 @@ namespace SiLA.Provider
         public SiLAReturnValue Delay(int requestId, string lockId, string time)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "Delay");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -370,7 +369,7 @@ namespace SiLA.Provider
         public SiLAReturnValue GetParameters(int requestId, string lockId)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "GetParameters");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -395,7 +394,7 @@ namespace SiLA.Provider
         public SiLAReturnValue SetParameters(int requestId, string lockId, string paramsXML)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "SetParameters");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -421,7 +420,7 @@ namespace SiLA.Provider
         public SiLAReturnValue StoreAtPosition(int requestId, string lockId, int position, string labwareType)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "StoreAtPosition");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
@@ -447,7 +446,7 @@ namespace SiLA.Provider
         public SiLAReturnValue RetrieveByPositionId(int requestId, string lockId, int position, string labwareType)
         {
             SiLAReturnValue returnValue = this.Device.ProcessRequest(requestId, lockId, "RetrieveByPositionId");
-            if (returnValue.returnCode != (int)ReturnCode.Success)
+            if (returnValue.ReturnCode != (int)ReturnCode.Success)
             {
                 // invalid request or lock error
                 return returnValue;
