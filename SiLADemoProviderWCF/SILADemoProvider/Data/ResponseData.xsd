@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ResponseData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Value" nillable="true" type="Parameter"/>
+  <xs:complexType name="Parameter">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="Boolean" type="xs:boolean"/>
+        <xs:element name="DateTime" type="xs:dateTime"/>
+        <xs:element name="Float32" type="xs:float"/>
+        <xs:element name="Float64" type="xs:double"/>
+        <xs:element name="Byte" type="xs:byte"/>
+        <xs:element name="Short" type="xs:short"/>
+        <xs:element name="Duration" type="xs:duration"/>
+        <xs:element name="unsignedByte" type="xs:unsignedByte"/>
+        <xs:element name="unsignedShort" type="xs:unsignedShort"/>
+        <xs:element name="unsignedInt" type="xs:unsignedInt"/>
+        <xs:element name="unsignedLong" type="xs:unsignedLong"/>
+        <xs:element name="Int32" type="xs:int"/>
+        <xs:element name="Int64" type="xs:long"/>
+        <xs:element name="String" type="xs:string"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="parameterType" type="AllowedType"/>
+  </xs:complexType>
+  <xs:element name="ParameterSet" nillable="true" type="ParameterSet"/>
+  <xs:complexType name="ParameterSet">
+    <xs:sequence>
+      <xs:element name="Parameter" type="Parameter"
+      minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseData" nillable="true" type="ResponseData"/>
+  <xs:complexType name="ResponseData">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="AnyData" type="xs:anyType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="ParameterSet" type="ParameterSet"
+        minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="Parameter" type="Parameter" minOccurs="0"
+        maxOccurs="1"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AllowedType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boolean"/>
+      <xs:enumeration value="DateTime"/>
+      <xs:enumeration value="Float32"/>
+      <xs:enumeration value="Float64"/>
+      <xs:enumeration value="Byte"/>
+      <xs:enumeration value="Short"/>
+      <xs:enumeration value="Int32"/>
+      <xs:enumeration value="Int64"/>
+      <xs:enumeration value="unsignedByte"/>
+      <xs:enumeration value="unsignedShort"/>
+      <xs:enumeration value="unsignedInt"/>
+      <xs:enumeration value="unsignedLong"/>
+      <xs:enumeration value="String"/>
+      <xs:enumeration value="Duration"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
