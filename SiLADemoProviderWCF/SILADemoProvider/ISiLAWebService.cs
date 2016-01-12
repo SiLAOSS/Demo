@@ -22,7 +22,7 @@ namespace SiLA.Provider
         ///      <description>Empty response</description>
         ///   </response>
         ///</SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Abort")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Abort", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "Abort")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.AbortDescription)]
         SiLAReturnValue Abort(int requestId, string lockId);
 
@@ -39,7 +39,7 @@ namespace SiLA.Provider
         /// <description>Empty response</description>
         /// </response>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "DoContinue")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "DoContinue", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "DoContinue")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.DoContinueDescription)]
         SiLAReturnValue DoContinue(int requestId, string lockId);
 
@@ -56,7 +56,7 @@ namespace SiLA.Provider
         /// The Device Identification. It is a SOAP complex type.
         /// </param>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "GetDeviceIdentification")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "GetDeviceIdentification", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "GetDeviceIdentification")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.GetDeviceIdentificationDescription)]
         SiLAReturnValue GetDeviceIdentification(int requestId, string lockId, out SiLA_DeviceIdentification deviceDescription);
 
@@ -75,7 +75,7 @@ namespace SiLA.Provider
         /// <param name="PMSId">Identification of the PMS that locked the device.</param>
         /// <param name="currentTime">Time of reporting status information.</param>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "GetStatus")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "GetStatus", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "GetStatus")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.GetStatusDescription)]
         SiLAReturnValue GetStatus(int requestId, out string deviceID, out Status state, out CommandDescription[] substates, out Boolean locked, out string PMSId, out DateTime currentTime);
 
@@ -88,7 +88,7 @@ namespace SiLA.Provider
         ///      <description>Empty response</description>
         ///   </response>
         ///</SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Initialize")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Initialize", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "Initialize")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.InitializeDescription)]
         SiLAReturnValue Initialize(int requestId, string lockId);
 
@@ -108,7 +108,7 @@ namespace SiLA.Provider
         /// <description>Empty response</description>
         /// </response>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "LockDevice")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "LockDevice", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "LockDevice")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.LockDeviceDescription)]
         SiLAReturnValue LockDevice(int requestId, string lockId, string lockTimeout, string eventReceiverURI, string PMSId);
 
@@ -125,7 +125,7 @@ namespace SiLA.Provider
         /// <description>Empty response</description>
         /// </response>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Pause")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Pause", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "Pause")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.PauseDescription)]
         SiLAReturnValue Pause(int requestId, string lockId);
 
@@ -147,7 +147,7 @@ namespace SiLA.Provider
         /// <description>Empty response</description>
         /// </response>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Reset")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Reset", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "Reset")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.ResetDescription)]
         SiLAReturnValue Reset(int requestId, string lockId, string deviceId, string eventReceiverURI, string PMSId, string errorHandlingTimeout, Boolean simulationMode);
 
@@ -164,7 +164,7 @@ namespace SiLA.Provider
         /// <description>Empty response</description>
         /// </response>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "UnlockDevice")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "UnlockDevice", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "UnlockDevice")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.UnlockDeviceDescription)]
         SiLAReturnValue UnlockDevice(int requestId, string lockId);
 
@@ -183,7 +183,7 @@ namespace SiLA.Provider
         /// <description>Empty response</description>
         /// </response>
         /// </SiLACommandDescription>
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Delay")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "Delay", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "Delay")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.DelayDescription)]
         SiLAReturnValue Delay(int requestId, string lockId, string time);
 
@@ -201,7 +201,7 @@ namespace SiLA.Provider
         /// </response>
         /// </SiLACommandDescription>
         //[WebMethod(Description = SiLAWebMethodDescriptions.GetParametersDescription)]
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "GetParameters")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "GetParameters", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "GetParameters")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.GetParametersDescription)]
         SiLAReturnValue GetParameters(int requestId, string lockId);
 
@@ -218,7 +218,7 @@ namespace SiLA.Provider
         /// </param>
         /// </SiLACommandDescription>
         //[WebMethod(Description = SiLAWebMethodDescriptions.SetParametersDescription)]
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "SetParameters")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "SetParameters", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "SetParameters")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.SetParametersDescription)]
         SiLAReturnValue SetParameters(int requestId, string lockId, string paramsXML);
 
@@ -236,7 +236,7 @@ namespace SiLA.Provider
         /// </response>
         /// </SiLACommandDescription>
         //[WebMethod(Description = SiLAWebMethodDescriptions.StoreAtPositionDescription)]
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "StoreAtPosition")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "StoreAtPosition", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "StoreAtPosition")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.StoreAtPositionDescription)]
         SiLAReturnValue StoreAtPosition(int requestId, string lockId, int position, string labwareType);
 
@@ -254,7 +254,7 @@ namespace SiLA.Provider
         /// </response>
         /// </SiLACommandDescription>
         //[WebMethod(Description = SiLAWebMethodDescriptions.RetrieveByPositionIdDescription)]
-        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "RetrieveByPositionId")]
+        [OperationContract(Action = SiLADefinitions.SiLAOperationNamespace + "RetrieveByPositionId", ReplyAction = SiLADefinitions.SiLAOperationNamespace + "RetrieveByPositionId")]
         [WsdlDocumentation(SiLAWebMethodDescriptions.RetrieveByPositionIdDescription)]
         SiLAReturnValue RetrieveByPositionId(int requestId, string lockId, int position, string labwareType);
        
