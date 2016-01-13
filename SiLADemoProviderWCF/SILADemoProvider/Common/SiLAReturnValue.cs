@@ -56,7 +56,7 @@ namespace SiLA.Provider
         /// </value>
         //[System.Runtime.Serialization.DataMemberAttribute(Name = "deviceClass")]
         //[XmlElement(ElementName = "deviceClass", Order = 1)]
-        [DataMember(Name = "deviceClass", Order = 1)]        
+        [DataMember(Name = "deviceClass", Order = 4)]        
         public int DeviceClass { get; set; }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace SiLA.Provider
         /// The return code itself.
         /// </value>
        // [System.Runtime.Serialization.DataMemberAttribute(Name = "returnCode")]
-        [DataMember(Name = "returnCode", Order = 4)]
+        [DataMember(Name = "returnCode", Order = 1)]
         public int ReturnCode { get; set; }
 
         #endregion //Properties	

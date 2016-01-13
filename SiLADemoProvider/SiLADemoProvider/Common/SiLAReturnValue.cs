@@ -44,7 +44,7 @@ namespace SiLA.Provider
         /// The ID of the Device Class.
         /// </value>
         [System.Runtime.Serialization.DataMemberAttribute()]
-        [XmlElement(ElementName="deviceClass", Order=1)]
+        [XmlElement(ElementName="deviceClass", Order=4)]
         public int DeviceClass { get; set; }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace SiLA.Provider
         /// The return code itself.
         /// </value>
         [System.Runtime.Serialization.DataMemberAttribute(Name = "returnCode")]
-        [XmlElement(ElementName="returnCode", Order=4)]
+        [XmlElement(ElementName="returnCode", Order=1)]
         public int ReturnCode { get; set; }
         
         #endregion //Properties	
